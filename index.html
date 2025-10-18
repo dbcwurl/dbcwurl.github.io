@@ -599,7 +599,7 @@
         let displayedMessageIds = new Set();
 
         document.addEventListener('DOMContentLoaded', () => {
-            const savedToken = localStorage.getItem('discordBotToken');
+            const savedToken = localStorage.getItem('token');
             if (savedToken) {
                 document.getElementById('bot-token').value = savedToken;
                 verifyToken();
@@ -629,7 +629,7 @@
                 if (data.success) {
                     sessionId = data.sessionId;
                     currentBot = data.bot;
-                    localStorage.setItem('discordBotToken', token);
+                    localStorage.setItem('Token', token);
                     document.getElementById('token-setup').style.display = 'none';
                     loadServers();
                 } else {
@@ -998,7 +998,7 @@
         });
 
         document.getElementById('logout-btn').addEventListener('click', () => {
-            localStorage.removeItem('discordBotToken');
+            localStorage.removeItem('token');
             if (ws) {
                 ws.close();
                 ws = null;
